@@ -1,15 +1,15 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
 
-name: todo-nodejs-mongo
-metadata:
-  template: todo-nodejs-mongo@0.0.1-beta
+name: the-toolkit-sample
 services:
-  web:
+  noop:
     project: ./src/web
     dist: build
     language: js
-    host: appservice
-  api:
-    project: ./src/api
-    language: js
-    host: appservice
+    host: containerapp
+hooks:
+  postprovision:
+    shell: pwsh
+    run: ./hooks/postprovision.ps1
+    continueOnError: false
+    interactive: false
